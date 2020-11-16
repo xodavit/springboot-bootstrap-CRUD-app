@@ -10,8 +10,15 @@ import java.util.List;
 
 @Controller
 public class RootController {
+
     @RequestMapping(value = "/")
-    public String getHomePage(Model model) {
+    public String getHomePage() {
+        return "redirect:login";
+
+    }
+
+    @RequestMapping(value = "hello")
+    public String getHelloPage(Model model) {
         List<String> messages = new ArrayList<>();
         messages.add("Hello!");
         messages.add("I'm Spring MVC-SECURITY application");
