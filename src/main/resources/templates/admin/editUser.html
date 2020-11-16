@@ -9,7 +9,6 @@
     <th:block th:include="static/_HeadNavBar">HeadMenu</th:block>
     <th:block th:include="static/_LeftNavBar">LeftMenu</th:block>
 </div>
-<h2>Изменить пользователя</h2>
 <div>
     <form th:action="@{/admin/edit}" th:object="${user}" method="post">
         <input type="hidden" name="id" th:value="${user.getId()}">
