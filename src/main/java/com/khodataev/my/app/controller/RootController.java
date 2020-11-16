@@ -24,7 +24,7 @@ public class RootController {
         messages.add("I'm Spring MVC-SECURITY application");
         messages.add("This is Root Page");
         model.addAttribute("messages", messages);
-        return "helloPage";
+        return "static/helloPage";
     }
 
 //    @GetMapping(value = "login")

@@ -21,6 +21,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping
+    public String getUserPage(ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        return "user/userPage";
+    }
 //    @GetMapping(value = "/")
 //    public String getUserPage(ModelMap modelMap) {
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -29,15 +34,9 @@ public class UserController {
 //    }
 
 
-
-    @GetMapping(value = "/lk")
-    public String getUserPage2(ModelMap modelMap, Principal principal) {
-        modelMap.addAttribute("user", userService.loadUserByUsername(principal.getName()));
-        return "userPage";
-    }
-    @GetMapping("/{id}")
-    public String show(@PathVariable("id") Long id, ModelMap modelMap) {
-        modelMap.addAttribute("user", userService.getUserById(id));
-        return "userPage";
-    }
+//    @GetMapping("/{id}")
+//    public String show(@PathVariable("id") Long id, ModelMap modelMap) {
+//        modelMap.addAttribute("user", userService.getUserById(id));
+//        return "userPage";
+//    }
 }
