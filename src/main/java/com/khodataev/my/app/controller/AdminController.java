@@ -16,6 +16,7 @@ import java.util.Set;
 
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     private final UserService userService;
@@ -27,30 +28,24 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @GetMapping(value = "/admin")
-    public String welcome() {
-        return "redirect:/admin/all";
-    }
-
-    @GetMapping(value = "admin/all")
+    @GetMapping
     public String allUsers(ModelMap model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "allUsersPage";
+        return "admin/allUsersPage";
     }
 
-    @GetMapping(value = "admin/add")
+    @GetMapping(value = "add")
     public String addUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "addUser";
+        return "admin/addUser";
     }
 
-    @PostMapping(value = "admin/add")
+    @PostMapping(value = "add")
     public String postAddUser(@ModelAttribute("user") User user,
-                              @RequestParam(required=false) String roleAdmin,
-                              @RequestParam(required=false) String roleVIP) {
+                              @RequestParam(required = false) String roleAdmin,
+                              @RequestParam(required = false) String roleVIP) {
         Set<Role> roles = new HashSet<>();
-        //roles.add(roleService.getRoleByName("ROLE_USER"));
         roles.add(roleService.getRoleByName("ROLE_USER"));
         if (roleAdmin != null && roleAdmin.equals("ROLE_ADMIN")) {
             roles.add(roleService.getRoleByName("ROLE_ADMIN"));
@@ -65,11 +60,11 @@ public class AdminController {
     }
 
 
-    @GetMapping(value = "admin/edit/{id}")
+    @GetMapping(value = "edit/{id}")
     public String editUser(ModelMap model, @PathVariable("id") Long id) {
         User user = userService.getUserById(id);
         Set<Role> roles = user.getRoles();
-        for (Role role: roles) {
+        for (Role role : roles) {
             if (role.equals(roleService.getRoleByName("ROLE_ADMIN"))) {
                 model.addAttribute("roleAdmin", true);
             }
@@ -78,16 +73,17 @@ public class AdminController {
             }
         }
         model.addAttribute("user", user);
-        return "editUser";
+        return "admin/editUser";
     }
-    @PostMapping(value = "admin/edit")
+
+    @PostMapping(value = "edit")
     public String postEditUser(@ModelAttribute("user") User user,
-                               @RequestParam(required=false) String roleAdmin,
-                               @RequestParam(required=false) String roleVIP) {
+                               @RequestParam(required = false) String roleAdmin,
+                               @RequestParam(required = false) String roleVIP) {
 
         Set<Role> roles = new HashSet<>();
         roles.add(roleService.getRoleByName("ROLE_USER"));
-        if (roleAdmin != null && roleAdmin .equals("ROLE_ADMIN")) {
+        if (roleAdmin != null && roleAdmin.equals("ROLE_ADMIN")) {
             roles.add(roleService.getRoleByName("ROLE_ADMIN"));
         }
         if (roleVIP != null && roleVIP.equals("ROLE_VIP")) {
@@ -98,7 +94,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("admin/delete/{id}")
+    @GetMapping("delete/{id}")
     public String deleteUserById(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/admin";

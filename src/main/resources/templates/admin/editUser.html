@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <th:block th:include="menuPage">Menu</th:block>
+    <th:block th:include="static/menuPage">Menu</th:block>
 </div>
 <h2>Изменить пользователя</h2>
 <div>
@@ -54,7 +54,7 @@
         <button type="submit">Изменить данные</button>
     </form>
     <br/>
-    <form th:action="@{/admin/all}">
+    <form th:action="@{/admin}">
         <button type="submit">Назад к списку пользователей</button>
     </form>
 </div>

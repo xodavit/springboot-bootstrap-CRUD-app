@@ -7,7 +7,7 @@
 <body>
 <h2>Все пользователи</h2>
 <div>
-    <th:block th:include="menuPage">Menu</th:block>
+    <th:block th:include="static/menuPage">Menu</th:block>
 </div>
 <div>
     <table>
@@ -38,12 +38,12 @@
                 </div>
             </td>
             <td>
-                <form th:action="@{edit/{id}(id=${user.getId()})}" th:object="${user}">
+                <form th:action="@{admin/edit/{id}(id=${user.getId()})}" th:object="${user}">
                     <button type="submit">Изменить</button>
                 </form>
             </td>
             <td>
-                <form th:action="@{delete/{id}(id=${user.getId()})}" th:object="${user}">
+                <form th:action="@{admin/delete/{id}(id=${user.getId()})}" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.getId()}">
                     <button type="submit">Удалить</button>
                 </form>
@@ -51,7 +51,7 @@
         </tr>
         </tbody>
     </table>
-    <form th:action="@{add}">
+    <form th:action="@{admin/add}">
         <button type="submit">Добавить нового пользователя</button>
     </form>
 </div>
