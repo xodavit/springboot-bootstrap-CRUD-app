@@ -90,7 +90,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // делаем страницу регистрации недоступной для авторизированных пользователей
                 .authorizeRequests()
 
-                .antMatchers("/hello/**","/").permitAll() // доступность всем
+                .antMatchers("/hello/**").permitAll() // доступность всем
 
                 //страница аутентификации доступна всем
                 .antMatchers("/login").anonymous()
