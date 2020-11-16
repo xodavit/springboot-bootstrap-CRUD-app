@@ -20,10 +20,10 @@ public class RootController {
         return "helloPage";
     }
 
-    @GetMapping(value = "login")
-    public String getLoginPage() {
-        return "loginPage";
-    }
+//    @GetMapping(value = "login")
+//    public String getLoginPage() {
+//        return "loginPage";
+//    }
 
     @GetMapping(value = "vip")
     public String getVipPage(Model model) {

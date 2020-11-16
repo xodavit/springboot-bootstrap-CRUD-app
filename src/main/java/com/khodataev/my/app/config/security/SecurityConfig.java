@@ -63,13 +63,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(filter, CsrfFilter.class);
 
         http.formLogin()
-                // указываем страницу с формой логина
-//                .loginPage("/login")
+//                // указываем страницу с формой логина
+////                .loginPage("/login")
                 //указываем логику обработки при логине
                 .successHandler(loginSuccessHandler)
-                // указываем action с формы логина
+//                // указываем action с формы логина
 //                .loginProcessingUrl("/login")
-                // Указываем параметры логина и пароля с формы логина
+//                // Указываем параметры логина и пароля с формы логина
 //                .usernameParameter("j_username")
 //                .passwordParameter("j_password")
                 // даем доступ к форме логина всем
@@ -81,7 +81,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // указываем URL логаута
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 // указываем URL при удачном логауте
-                .logoutSuccessUrl("/login?logout")
+                //.logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/")
                 //выключаем кросс-доменную секьюрность (на этапе обучения неважна)
                 .and().csrf().disable(); //- попробуйте выяснить сами, что это даёт
 
