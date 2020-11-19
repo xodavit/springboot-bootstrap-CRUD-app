@@ -24,12 +24,12 @@ public class RootController {
         messages.add("I'm Spring MVC-SECURITY application");
         messages.add("This is Root Page");
         model.addAttribute("messages", messages);
-        return "static/helloPage";
+        return "helloPage";
     }
 
 //    @GetMapping(value = "login")
 //    public String getLoginPage() {
-//        return "static/loginPage";
+//        return "loginPage";
 //    }
 
     @GetMapping(value = "vip")
@@ -39,6 +39,6 @@ public class RootController {
         messages.add("I'm Spring MVC-SECURITY application");
         messages.add("This is VIP Page");
         model.addAttribute("messages", messages);
-        return "static/vipPage";
+        return "vipPage";
     }
 }

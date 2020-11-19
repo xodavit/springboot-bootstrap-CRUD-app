@@ -31,14 +31,14 @@ public class AdminController {
     @GetMapping
     public String allUsers(ModelMap model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "admin/allUsersPage";
+        return "adminPage";
     }
 
     @GetMapping(value = "add")
     public String addUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "admin/addUser";
+        return "addUser";
     }
 
     @PostMapping(value = "add")
@@ -73,7 +73,7 @@ public class AdminController {
             }
         }
         model.addAttribute("user", user);
-        return "admin/editUser";
+        return "editUser";
     }
 
     @PostMapping(value = "edit")
