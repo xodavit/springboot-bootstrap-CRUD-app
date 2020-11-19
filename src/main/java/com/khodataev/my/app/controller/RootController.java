@@ -35,7 +35,10 @@ public class RootController {
         messages.add("This is Root Page");
 
         model.addAttribute("messages", messages);
-        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        if (principal != null) {
+            model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        }
+
         return "helloPage";
     }
 
