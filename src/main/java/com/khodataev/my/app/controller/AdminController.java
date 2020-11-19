@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,8 +30,9 @@ public class AdminController {
     }
 
     @GetMapping
-    public String allUsers(ModelMap model) {
+    public String allUsers(ModelMap model, Principal principal) {
         model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
         return "adminPage";
     }
 

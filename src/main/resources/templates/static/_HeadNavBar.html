@@ -1,8 +1,16 @@
-<div xmlns:th="http://www.thymeleaf.org">
-    <form th:if="${#request.userPrincipal == null}" th:action="@{/login}">
-        <button type="submit">Войти</button>
-    </form>
-    <form th:if="${#request.userPrincipal != null}" th:action="@{/logout}">
-        <button type="submit">Выйти</button>
-    </form>
-</div>
+<nav xmlns:th="http://www.thymeleaf.org"
+     class="navbar navbar-dark bg-dark flex-md-nowrap p-1 shadow">
+     <span class="navbar-text" style="color: white" th:text="${user.getEmail()} + ' with roles: ' + ${#strings.arrayJoin(user.getRoles(), ' ')}">
+     </span>
+    <ul class="navbar-nav">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" th:href="@{/logout}">Logout</a>
+        </li>
+    </ul>
+<!--    <form th:if="${#request.userPrincipal == null}" th:action="@{/login}">-->
+<!--        <button type="submit">Войти</button>-->
+<!--    </form>-->
+<!--    <form th:if="${#request.userPrincipal != null}" th:action="@{/logout}">-->
+<!--        <button type="submit">Выйти</button>-->
+<!--    </form>-->
+</nav>
