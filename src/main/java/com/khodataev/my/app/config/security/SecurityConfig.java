@@ -86,9 +86,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //выключаем кросс-доменную секьюрность (на этапе обучения неважна)
                 .and().csrf().disable(); //- попробуйте выяснить сами, что это даёт
 
-        http
-                // делаем страницу регистрации недоступной для авторизированных пользователей
-                .authorizeRequests()
+
+        http.authorizeRequests() // делаем страницу регистрации недоступной для авторизированных пользователей
 
                 .antMatchers("/hello/**").permitAll() // доступность всем
 

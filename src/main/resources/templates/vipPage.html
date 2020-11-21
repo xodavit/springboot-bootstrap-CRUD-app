@@ -13,7 +13,10 @@
     <th:block th:include="static/_HeadNavBar">HeadMenu</th:block>
 </header>
 <main>
-    <th:block th:include="static/_LeftNavBar">LeftMenu</th:block>
+    <div>
+        <th:block th:include="static/_LeftNavBar">LeftMenu</th:block>
+    </div>
+
     <div>
         <th:block th:each="msg : ${messages}">
             <h1 th:text="${msg}"></h1>

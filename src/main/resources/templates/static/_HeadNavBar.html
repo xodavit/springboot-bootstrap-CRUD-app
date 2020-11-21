@@ -1,21 +1,24 @@
 <nav xmlns:th="http://www.thymeleaf.org"
      class="navbar navbar-dark bg-dark flex-md-nowrap p-1 shadow">
     <div th:if="${#request.userPrincipal != null}">
-         <span class="navbar-text font-weight-bold" style="color: white"
+        <span class="navbar-text font-weight-bold" style="color: white"
                th:text="${user.getEmail()}">
-     </span>
+        </span>
+<!--
+        TODO убрать отображение префикс роли
+-->
         <span class="navbar-text" style="color: white"
               th:text="' with roles: ' + ${#strings.arrayJoin(user.getRoles(), ' ')}">
-     </span>
+        </span>
     </div>
 
     <div th:if="${#request.userPrincipal == null}">
         <span class="navbar-text font-weight-bold" style="color: white"
-              th:text="'Привет Гость'">
-     </span>
+              th:text="'Привет Гость.'">
+        </span>
         <span class="navbar-text" style="color: white"
-              th:text="'пожалуйста авторизуйтесь'">
-     </span>
+              th:text="'пожалуйста авторизуйся'">
+        </span>
     </div>
     <div>
         <ul class="navbar-nav">

@@ -1,14 +1,23 @@
 <nav xmlns:th="http://www.thymeleaf.org">
-    <form th:action="@{/admin}">
-        <button type="submit">Админка</button>
-    </form>
-    <form th:action="@{/user}">
-        <button type="submit">ЛК</button>
-    </form>
-    <form th:action="@{/vip}">
-        <button type="submit">Вип контент</button>
-    </form>
-    <form th:action="@{/hello}">
-        <button type="submit">Стартовая страница</button>
-    </form>
+
+<!--    TODO переписать на нормальные ссылки-->
+
+    <div th:if="${#request.userPrincipal != null}">
+<!--        <a th:href="@{/user}">Личный кабинет</a>-->
+<!--        <a th:href="@{/admin}">Админка</a>-->
+<!--        <a th:href="@{/vip}">Вип контент</a>-->
+        <form th:action="@{/admin}">
+            <button type="submit">Админка</button>
+        </form>
+        <form th:action="@{/user}">
+            <button type="submit">ЛК</button>
+        </form>
+        <form th:action="@{/vip}">
+            <button type="submit">Вип контент</button>
+        </form>
+        <form th:action="@{/hello}">
+            <button type="submit">Стартовая страница</button>
+        </form>
+    </div>
+
 </nav>

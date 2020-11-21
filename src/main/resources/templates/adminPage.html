@@ -12,7 +12,9 @@
     <th:block th:include="static/_HeadNavBar">HeadMenu</th:block>
 </header>
 <main>
-    <th:block th:include="static/_LeftNavBar">LeftMenu</th:block>
+    <div>
+        <th:block th:include="static/_LeftNavBar">LeftMenu</th:block>
+    </div>
     <div>
         <table>
             <thead>
@@ -36,25 +38,28 @@
                 <td th:text="${user.getLastName()}">Фамилия</td>
                 <td>
                     <div th:each="role: ${user.getRoles()}">
-                        <span th:if="(${role.getName()} == 'ROLE_ADMIN')" th:utext="Администратор"></span>
-                        <span th:if="(${role.getName()} == 'ROLE_VIP')" th:utext="Вип"></span>
-                        <span th:if="(${role.getName()} == 'ROLE_USER')" th:utext="Юзверь"></span>
+                        <span th:if="(${role.getName()} == 'ROLE_ADMIN')"
+                              th:utext="Администратор"></span>
+                        <span th:if="(${role.getName()} == 'ROLE_VIP')"
+                              th:utext="Вип"></span>
+                        <span th:if="(${role.getName()} == 'ROLE_USER')"
+                              th:utext="Юзверь"></span>
                     </div>
                 </td>
                 <td>
-                    <form th:action="@{admin/edit/{id}(id=${user.getId()})}" th:object="${user}">
+                    <form th:action="@{admin/edit/{id}(id=${user.getId()})}">
                         <button type="submit">Изменить</button>
                     </form>
                 </td>
                 <td>
-                    <form th:action="@{admin/delete/{id}(id=${user.getId()})}" th:object="${user}">
-                        <input type="hidden" name="id" th:value="${user.getId()}">
+                    <form th:action="@{admin/delete/{id}(id=${user.getId()})}">
                         <button type="submit">Удалить</button>
                     </form>
                 </td>
             </tr>
             </tbody>
         </table>
+
         <form th:action="@{admin/add}">
             <button type="submit">Добавить нового пользователя</button>
         </form>
