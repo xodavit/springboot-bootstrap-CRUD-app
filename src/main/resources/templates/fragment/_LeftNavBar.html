@@ -1,23 +1,80 @@
-<nav xmlns:th="http://www.thymeleaf.org">
+<nav xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.w3.org/1999/xhtml"
+     th:if="${#request.userPrincipal != null}"
+     class="pt-3">
+        <!--навигация слева админ/юзер-->
+    <ul class="nav nav-pills flex-column">
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link"-->
+<!--               data-toggle="tab"-->
+<!--               href="#Admin">Admin</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link"-->
+<!--               data-toggle="tab"-->
+<!--               href="#User">User</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link"-->
+<!--               data-toggle="tab"-->
+<!--               href="#Vip">Вип контент</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link"-->
+<!--               data-toggle="tab"-->
+<!--               href="#Hello">Стартовая</a>-->
+<!--        </li>-->
 
-<!--    TODO переписать на нормальные ссылки-->
+        <li class="nav-item">
+            <a class="nav-link"
 
-    <div th:if="${#request.userPrincipal != null}">
-<!--        <a th:href="@{/user}">Личный кабинет</a>-->
-<!--        <a th:href="@{/admin}">Админка</a>-->
-<!--        <a th:href="@{/vip}">Вип контент</a>-->
-        <form th:action="@{/admin}">
-            <button type="submit">Админка</button>
-        </form>
-        <form th:action="@{/user}">
-            <button type="submit">ЛК</button>
-        </form>
-        <form th:action="@{/vip}">
-            <button type="submit">Вип контент</button>
-        </form>
-        <form th:action="@{/hello}">
-            <button type="submit">Стартовая страница</button>
-        </form>
-    </div>
+               href="/admin">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
 
+               href="/user">User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+
+               href="/vip">Вип контент</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+
+               href="/hello">Стартовая</a>
+        </li>
+
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link"-->
+<!--               data-toggle="tab"-->
+<!--               href="/hello">Main</a>-->
+<!--        </li>-->
+
+<!--        <div sec:authorize="hasAuthority('ROLE_ADMIN')">-->
+<!--            <li class="nav-item">-Admin-->
+<!--                <a class="nav-link"-->
+<!--                   data-toggle="tab"-->
+<!--                   href="#Admin"></a>-->
+<!--            </li>-->
+
+<!--        </div>-->
+
+<!--        <div sec:authorize="hasAuthority('ROLE_USER')">-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link"-->
+<!--                   data-toggle="tab"-->
+<!--                   href="#User">User</a>-->
+<!--            </li>-->
+<!--        </div>-->
+
+<!--        <div sec:authorize="hasAuthority('ROLE_VIP')">-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link"-->
+<!--                   data-toggle="tab"-->
+<!--                   href="/vip">VIP Content</a>-->
+<!--            </li>-->
+<!--        </div>-->
+    </ul>
 </nav>

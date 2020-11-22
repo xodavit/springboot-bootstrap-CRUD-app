@@ -36,7 +36,7 @@ public class RootController {
 
         model.addAttribute("messages", messages);
         if (principal != null) {
-            model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+            model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
         }
 
         return "helloPage";
@@ -54,7 +54,7 @@ public class RootController {
         messages.add("I'm Spring MVC-SECURITY application");
         messages.add("This is VIP Page");
         model.addAttribute("messages", messages);
-        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
         return "vipPage";
     }
 }

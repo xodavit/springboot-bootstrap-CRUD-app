@@ -32,14 +32,15 @@ public class AdminController {
     @GetMapping
     public String allUsers(ModelMap model, Principal principal) {
         model.addAttribute("users", userService.getAllUsers());
-        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
         return "adminPage";
     }
 
     @GetMapping(value = "add")
-    public String addUser(Model model) {
+    public String addUser(Model model, Principal principal) {
         User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("userNew", user);
+        model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
         return "addUser";
     }
 
@@ -63,7 +64,7 @@ public class AdminController {
 
 
     @GetMapping(value = "edit/{id}")
-    public String editUser(ModelMap model, @PathVariable("id") Long id) {
+    public String editUser(ModelMap model, @PathVariable("id") Long id, Principal principal) {
         User user = userService.getUserById(id);
         Set<Role> roles = user.getRoles();
         for (Role role : roles) {
@@ -74,7 +75,8 @@ public class AdminController {
                 model.addAttribute("roleVIP", true);
             }
         }
-        model.addAttribute("user", user);
+        model.addAttribute("userDB", user);
+        model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
         return "editUser";
     }
 

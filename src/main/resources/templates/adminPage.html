@@ -12,57 +12,68 @@
     <th:block th:include="fragment/_HeadNavBar">HeadMenu</th:block>
 </header>
 <main>
-    <div>
-        <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
-    </div>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Почтовый ящик</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Роль</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.getId()}">Id</td>
-                <td th:text="${user.getUsername()}">Login</td>
-                <td th:text="${user.getPassword()}">Password</td>
-                <td th:text="${user.getEmail()}">Почтовый ящик</td>
-                <td th:text="${user.getFirstName()}">Имя</td>
-                <td th:text="${user.getLastName()}">Фамилия</td>
-                <td>
-                    <div th:each="role: ${user.getRoles()}">
-                        <span th:if="(${role.getName()} == 'ROLE_ADMIN')"
-                              th:utext="Администратор"></span>
-                        <span th:if="(${role.getName()} == 'ROLE_VIP')"
-                              th:utext="Вип"></span>
-                        <span th:if="(${role.getName()} == 'ROLE_USER')"
-                              th:utext="Юзверь"></span>
-                    </div>
-                </td>
-                <td>
-                    <form th:action="@{admin/edit/{id}(id=${user.getId()})}">
-                        <button type="submit">Изменить</button>
-                    </form>
-                </td>
-                <td>
-                    <form th:action="@{admin/delete/{id}(id=${user.getId()})}">
-                        <button type="submit">Удалить</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <div class="col-md-2 pl-0 pr-0 bg-white">
+                <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
+            </div>
+            <div class="col-md-10 bg-light">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="Admin">
+                        <h2>Admin panel</h2>
+                        <div>
+                            <form th:action="@{admin/add}">
+                                <button type="submit">Добавить нового пользователя</button>
+                            </form>
+                        </div>
 
-        <form th:action="@{admin/add}">
-            <button type="submit">Добавить нового пользователя</button>
-        </form>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="user : ${users}">
+                                <td th:text="${user.getId()}"></td>
+                                <td th:text="${user.getFirstName()}"></td>
+                                <td th:text="${user.getLastName()}"></td>
+                                <td></td>
+                                <td th:text="${user.getEmail()}"></td>
+                                <td>
+                                    <div th:each="role: ${user.getRoles()}">
+                                    <span th:if="(${role.getName()} == 'ROLE_ADMIN')"
+                                          th:utext="Администратор"></span>
+                                        <span th:if="(${role.getName()} == 'ROLE_VIP')"
+                                              th:utext="Вип"></span>
+                                        <span th:if="(${role.getName()} == 'ROLE_USER')"
+                                              th:utext="Юзверь"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <form th:action="@{admin/edit/{id}(id=${user.getId()})}">
+                                        <button type="submit">Изменить</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form th:action="@{admin/delete/{id}(id=${user.getId()})}">
+                                        <button type="submit">Удалить</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 <footer></footer>

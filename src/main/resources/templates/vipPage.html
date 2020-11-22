@@ -13,14 +13,17 @@
     <th:block th:include="fragment/_HeadNavBar">HeadMenu</th:block>
 </header>
 <main>
-    <div>
-        <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
-    </div>
-
-    <div>
-        <th:block th:each="msg : ${messages}">
-            <h1 th:text="${msg}"></h1>
-        </th:block>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 pl-0 pr-0 bg-white">
+                <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
+            </div>
+            <div class="col-md-10">
+                <th:block th:each="msg : ${messages}">
+                    <h1 th:text="${msg}"></h1>
+                </th:block>
+            </div>
+        </div>
     </div>
 </main>
 <footer></footer>

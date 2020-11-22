@@ -12,32 +12,46 @@
     <th:block th:include="fragment/_HeadNavBar">HeadMenu</th:block>
 </header>
 <main>
-    <div>
-        <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
-    </div>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Почтовый ящик</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td th:text="${user.getId()}">Id</td>
-                <td th:text="${user.getUsername()}">Login</td>
-                <td th:text="${user.getPassword()}">Password</td>
-                <td th:text="${user.getEmail()}">Почтовый ящик</td>
-                <td th:text="${user.getFirstName()}">Имя</td>
-                <td th:text="${user.getLastName()}">Фамилия</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 pl-0 pr-0 bg-white">
+                <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
+            </div>
+            <div class="col-md-10">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="User">
+                        <h2>User information-page</h2>
+                        <div class="card">
+                            <h5>About user</h5>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Age</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td th:text="${userThis.getId()}"></td>
+                                        <td th:text="${userThis.getFirstName()}"></td>
+                                        <td th:text="${userThis.getLastName()}"></td>
+                                        <td></td>
+                                        <td th:text="${userThis.getEmail()}"></td>
+                                        <td th:utext="${#strings.arrayJoin(userThis.getAuthorities(), ' ')}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 <footer>
