@@ -16,40 +16,40 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 pl-0 pr-0 bg-white">
-                <nav
-                     th:if="${#request.userPrincipal != null}"
-                     class="pt-3">
-                    <!--навигация слева-->
-                    <ul class="nav nav-pills flex-column">
+            <div class="col-md-2 <!--pl-0 pr-0--> bg-white"
+                 style="margin-top: 20px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        height: 100vh">
+                <!--навигация слева-->
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#User">User</a>
+                    </li>
+
+                    <div sec:authorize="hasAuthority('ADMIN')">
                         <li class="nav-item">
                             <a class="nav-link"
-
-                               href="/hello">Home</a>
+                               href="/admin">Admin</a>
                         </li>
+                    </div>
 
-                        <div sec:authorize="hasAuthority('ADMIN')">
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="/admin">Admin</a>
-                            </li>
-                        </div>
-
-                        <div sec:authorize="hasAuthority('VIP')">
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="/vip">VIP</a>
-                            </li>
-                        </div>
-                    </ul>
-                </nav>
+                    <div sec:authorize="hasAuthority('VIP')">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="/vip">VIP</a>
+                        </li>
+                    </div>
+                </ul>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10 bg-light"
+                 style="margin-top:20px;
+                        height: 100vh">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="User">
-                        <h2>User information-page</h2>
+                        <h2 class="h2">User information-page</h2>
                         <div class="card">
-                            <h5>About user</h5>
+                            <h5 class="card-header">About user</h5>
                             <div class="card-body">
                                 <table class="table table-striped">
                                     <thead>

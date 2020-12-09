@@ -5,11 +5,9 @@
         <span class="navbar-text font-weight-bold" style="color: white"
               th:text="${userThis.getEmail()}">
         </span>
-            <!--
-                    TODO убрать отображение префикс роли
-            -->
-            <span class="navbar-text" style="color: white"
-                  th:text="' with roles: ' + ${#strings.arrayJoin(userThis.getRoles(), ' ')}">
+
+        <span class="navbar-text" style="color: white"
+              th:text="' with roles: ' + ${#strings.arrayJoin(userThis.getRoles(), ' ')}">
         </span>
         </div>
 
@@ -17,8 +15,9 @@
         <span class="navbar-text font-weight-bold" style="color: white"
               th:text="'Привет Гость.'">
         </span>
-            <span class="navbar-text" style="color: white"
-                  th:text="'пожалуйста авторизуйся'">
+
+        <span class="navbar-text" style="color: white"
+              th:text="'пожалуйста авторизуйся'">
         </span>
         </div>
         <div>
