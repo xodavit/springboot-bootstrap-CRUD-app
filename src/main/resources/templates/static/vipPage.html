@@ -17,38 +17,51 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 pl-0 pr-0 bg-white">
-                <nav
-                     th:if="${#request.userPrincipal != null}"
-                     class="pt-3">
-                    <!--навигация слева-->
-                    <ul class="nav nav-pills flex-column">
+            <div class="col-md-2 bg-white"
+                 style="padding-top: 20px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        height: 100vh">
+
+                <!--навигация слева-->
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hello">Home</a>
+                    </li>
+
+                    <div sec:authorize="hasAuthority('USER')">
                         <li class="nav-item">
                             <a class="nav-link"
-
-                               href="/hello">Home</a>
+                               href="/user">User</a>
                         </li>
-
-                        <div sec:authorize="hasAuthority('ADMIN')">
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="/admin">Admin</a>
-                            </li>
-                        </div>
-
-                        <div sec:authorize="hasAuthority('USER')">
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="/user">User</a>
-                            </li>
-                        </div>
-                    </ul>
-                </nav>
+                    </div>
+                    <div sec:authorize="hasAuthority('ADMIN')">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="/admin">Admin</a>
+                        </li>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#Vip">VIP</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-10">
-                <th:block th:each="msg : ${messages}">
-                    <h1 th:text="${msg}"></h1>
-                </th:block>
+            <div class="col-md-10 bg-light"
+                 style="padding-top: 20px;
+                        height: 100vh">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="Vip">
+                        <h2 class="h2">Vip information-page</h2>
+                        <div class="card">
+                            <h5 class="card-header">Vip info</h5>
+                            <div class="card-body">
+                                <th:block th:each="msg : ${messages}">
+                                    <h1 th:text="${msg}"></h1>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
