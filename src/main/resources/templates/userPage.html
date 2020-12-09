@@ -40,7 +40,7 @@
                                         <td th:text="${userThis.getId()}"></td>
                                         <td th:text="${userThis.getFirstName()}"></td>
                                         <td th:text="${userThis.getLastName()}"></td>
-                                        <td></td>
+                                        <td th:text="${userThis.getAge()}"></td>
                                         <td th:text="${userThis.getEmail()}"></td>
                                         <td th:utext="${#strings.arrayJoin(userThis.getAuthorities(), ' ')}"></td>
                                     </tr>

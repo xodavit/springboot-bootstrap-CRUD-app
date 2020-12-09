@@ -33,6 +33,9 @@ public class User implements Serializable, UserDetails {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "age")
+    private byte age;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinTable(name = "t_users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -42,12 +45,14 @@ public class User implements Serializable, UserDetails {
     public User() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, Set<Role> roles) {
+    public User(Long id, String username, String password, String firstName, String lastName, String email, byte age, Set<Role> roles) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.age = age;
         this.roles = roles;
     }
 
@@ -99,6 +104,14 @@ public class User implements Serializable, UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public byte getAge() {
+        return age;
+    }
+
+    public void setAge(byte age) {
+        this.age = age;
     }
 
     public Set<Role> getRoles() {

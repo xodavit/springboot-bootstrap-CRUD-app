@@ -45,7 +45,7 @@
                                 <td th:text="${user.getId()}"></td>
                                 <td th:text="${user.getFirstName()}"></td>
                                 <td th:text="${user.getLastName()}"></td>
-                                <td></td>
+                                <td th:text="${user.getAge()}"></td>
                                 <td th:text="${user.getEmail()}"></td>
                                 <td>
                                     <div th:each="role: ${user.getRoles()}">
