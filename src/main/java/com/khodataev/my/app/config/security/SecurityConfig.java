@@ -98,9 +98,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/user/**").access("hasAnyRole('USER')") // разрешаем входить на /user пользователям с ролью User
                 //.antMatchers("/admin/**").access("hasRole('ADMIN')")
                 //.antMatchers("/vip/**").access("hasRole('VIP')")
-                .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/vip/**").hasRole("VIP")
+
+//                .antMatchers("/user/**").hasRole("USER")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/vip/**").hasRole("VIP")
+
+                .antMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/vip/**").hasAuthority("VIP")
                 .anyRequest().authenticated();
 
     }

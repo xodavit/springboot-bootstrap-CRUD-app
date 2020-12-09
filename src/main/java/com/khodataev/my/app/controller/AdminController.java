@@ -49,12 +49,12 @@ public class AdminController {
                               @RequestParam(required = false) String roleAdmin,
                               @RequestParam(required = false) String roleVIP) {
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getRoleByName("ROLE_USER"));
-        if (roleAdmin != null && roleAdmin.equals("ROLE_ADMIN")) {
-            roles.add(roleService.getRoleByName("ROLE_ADMIN"));
+        roles.add(roleService.getRoleByName("USER"));
+        if (roleAdmin != null && roleAdmin.equals("ADMIN")) {
+            roles.add(roleService.getRoleByName("ADMIN"));
         }
-        if (roleVIP != null && roleVIP.equals("ROLE_VIP")) {
-            roles.add(roleService.getRoleByName("ROLE_VIP"));
+        if (roleVIP != null && roleVIP.equals("VIP")) {
+            roles.add(roleService.getRoleByName("VIP"));
         }
         user.setRoles(roles);
         userService.addUser(user);
@@ -68,10 +68,10 @@ public class AdminController {
         User user = userService.getUserById(id);
         Set<Role> roles = user.getRoles();
         for (Role role : roles) {
-            if (role.equals(roleService.getRoleByName("ROLE_ADMIN"))) {
+            if (role.equals(roleService.getRoleByName("ADMIN"))) {
                 model.addAttribute("roleAdmin", true);
             }
-            if (role.equals(roleService.getRoleByName("ROLE_VIP"))) {
+            if (role.equals(roleService.getRoleByName("VIP"))) {
                 model.addAttribute("roleVIP", true);
             }
         }
@@ -86,12 +86,12 @@ public class AdminController {
                                @RequestParam(required = false) String roleVIP) {
 
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getRoleByName("ROLE_USER"));
-        if (roleAdmin != null && roleAdmin.equals("ROLE_ADMIN")) {
-            roles.add(roleService.getRoleByName("ROLE_ADMIN"));
+        roles.add(roleService.getRoleByName("USER"));
+        if (roleAdmin != null && roleAdmin.equals("ADMIN")) {
+            roles.add(roleService.getRoleByName("ADMIN"));
         }
-        if (roleVIP != null && roleVIP.equals("ROLE_VIP")) {
-            roles.add(roleService.getRoleByName("ROLE_VIP"));
+        if (roleVIP != null && roleVIP.equals("VIP")) {
+            roles.add(roleService.getRoleByName("VIP"));
         }
         user.setRoles(roles);
         userService.editUser(user);
