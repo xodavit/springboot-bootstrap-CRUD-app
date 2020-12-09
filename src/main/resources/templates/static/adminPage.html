@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +17,32 @@
     <div class="container-fluid">
         <div class="row vh-100">
             <div class="col-md-2 pl-0 pr-0 bg-white">
-                <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
+                <nav
+                     th:if="${#request.userPrincipal != null}"
+                     class="pt-3">
+                    <!--навигация слева-->
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link"
+
+                               href="/hello">Home</a>
+                        </li>
+
+                        <div sec:authorize="hasAuthority('USER')">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="/user">User</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="hasAuthority('VIP')">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="/vip">VIP</a>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
             </div>
             <div class="col-md-10 bg-light">
                 <div class="tab-content">

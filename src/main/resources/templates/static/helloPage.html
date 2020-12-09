@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +18,33 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 pl-0 pr-0 bg-white">
-                <th:block th:include="fragment/_LeftNavBar">LeftMenu</th:block>
+                <nav
+                     th:if="${#request.userPrincipal != null}"
+                     class="pt-3">
+                    <!--навигация слева -->
+                    <ul class="nav nav-pills flex-column">
+                        <div sec:authorize="hasAuthority('ADMIN')">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="/admin">Admin</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="hasAuthority('USER')">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="/user">User</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="hasAuthority('VIP')">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="/vip">VIP</a>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
             </div>
             <div class="col-md-10">
                 <th:block th:each="msg : ${messages}">
