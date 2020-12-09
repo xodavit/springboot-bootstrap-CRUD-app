@@ -1,6 +1,5 @@
 package com.khodataev.my.app.controller;
 
-import com.khodataev.my.app.service.RoleService;
 import com.khodataev.my.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +38,7 @@ public class RootController {
             model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
         }
 
-        return "helloPage";
+        return "static/helloPage";
     }
 
 //    @GetMapping(value = "login")
@@ -55,6 +54,6 @@ public class RootController {
         messages.add("This is VIP Page");
         model.addAttribute("messages", messages);
         model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
-        return "vipPage";
+        return "static/vipPage";
     }
 }

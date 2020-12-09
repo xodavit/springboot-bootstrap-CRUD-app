@@ -23,7 +23,7 @@ public class UserController {
     @GetMapping
     public String getUserPage(ModelMap modelMap, Principal principal) {
         modelMap.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
-        return "userPage";
+        return "static/userPage";
     }
 //    @GetMapping(value = "/")
 //    public String getUserPage(ModelMap modelMap) {

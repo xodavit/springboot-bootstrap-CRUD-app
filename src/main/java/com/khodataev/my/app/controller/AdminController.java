@@ -33,7 +33,7 @@ public class AdminController {
     public String allUsers(ModelMap model, Principal principal) {
         model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("userThis", userService.loadUserByUsername(principal.getName()));
-        return "adminPage";
+        return "static/adminPage";
     }
 
     @GetMapping(value = "add")
